@@ -1,160 +1,39 @@
----
-layout: default
----
 
-<div class="page clearfix" index>
-    <div class="left">
-        <h1>Welcome to lz -copy-for-apply-api</h1>
-        <small>点点滴滴-成长之路</small>
-        <hr>
-        <ul>
-            {% for post in paginator.posts %}
-              <li>
-                <h2>
-                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
-                    </div>
-                    <div class="label-card">
-                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
-                        {% endif %}
-                    </div>
-                    <div class="label-card">
-                        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
-                    </div>
-
-                    <div class="label-card">
-                    {% include category.html %}
-                    </div>
-
-                    <div class="label-card">
-                    {% include tag.html %}
-                    </div>
-                </div>
-                <div class="excerpt">
-                    {{post.excerpt}}
-                </div>
-                <div class="read-all">
-                    <a  href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            {% endfor %}
-        </ul>
-
-
-
-        <!-- Pagination links -->
-        <div class="pagination">
-          {% if paginator.previous_page %}
-            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
-            <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i></a>
-          {% else %}
-            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
-            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
-          {% endif %}
-          <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
-          {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
-          {% else %}
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
-          {% endif %}
-        </div>
-    </div>
-    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
-    <div class="right">
-        <div class="wrap">
-            <div class="side">
-                <div>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    最近文章
-                </div>
-                <ul class="content-ul" recent>
-                    {% for post in site.posts offset: 0 limit: 10  %}
-                        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <!-- Content -->
-            <div class="side ">
-                <div>
-                    <i class="fa fa-th-list"></i>
-                    类别<div id="ytWidget"></div><script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=zh&widgetTheme=light&autoMode=true" type="text/javascript"></script>
-                </div>
-                <ul class="content-ul" cate>
-                    {% for category in site.categories %}
-                    <li>
-                        <a href="{{ root_url }}/{{ site.category_dir }}#{{ category | first }}" class="categories-list-item" cate="{{ category | first }}">
-                            <span class="name">
-                                {{ category | first }}
-                            </span>
-                            <span class="badge">{{ category | last | size }}</span>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- 其他div框放到这里 -->
-            <div class="side">
-                <div>
-                    <i class="fa fa-tags"></i>
-                    标签
-                </div>
-                <div class="tags-cloud">
-                    {% assign first = site.tags.first %}
-                    {% assign max = first[1].size %}
-                    {% assign min = max %}
-                    {% for tag in site.tags offset:1 %}
-                      {% if tag[1].size > max %}
-                        {% assign max = tag[1].size %}
-                      {% elsif tag[1].size < min %}
-                        {% assign min = tag[1].size %}
-                      {% endif %}
-                    {% endfor %}
-
-                    {% if max == min %}
-                        {% assign diff = 1 %}
-                    {% else %}
-                        {% assign diff = max | minus: min %}
-                    {% endif %}
-
-                    {% for tag in site.tags %}
-                      {% assign temp = tag[1].size | minus: min | times: 36 | divided_by: diff %}
-                      {% assign base = temp | divided_by: 4 %}
-                      {% assign remain = temp | modulo: 4 %}
-                      {% if remain == 0 %}
-                        {% assign size = base | plus: 9 %}
-                      {% elsif remain == 1 or remain == 2 %}
-                        {% assign size = base | plus: 9 | append: '.5' %}
-                      {% else %}
-                        {% assign size = base | plus: 10 %}
-                      {% endif %}
-                      {% if remain == 0 or remain == 1 %}
-                        {% assign color = 9 | minus: base %}
-                      {% else %}
-                        {% assign color = 8 | minus: base %}
-                      {% endif %}
-                      <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag[0] }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-                
-            <!-- <div class="side">
-                <div>
-                    <i class="fa fa-external-link"></i>
-                    Links
-                </div>
-                <ul  class="content-ul">
-
-                </ul>
-            </div> -->
-        </div>
-    </div>
-</div>
-<!-- <script src="{{ "/js/scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script> -->
-<!-- <script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script> -->
+    <item_description>   <title>welcome to DS </title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+        <script type = "text/javascript"> 
+       //加载clipboadr.js
+         //.btn 按class绑定功能按钮
+         var clipboard = new Clipboard('.btn');
+       //复制成功触发的事件
+        clipboard.on('success', function(e) {
+        //自定义事件区域
+            alert("copy succeed,open taobao app to get the coupon!")
+            console.log(e);
+        });
+        //复制失败触发的事件
+        clipboard.on('error', function(e) {
+        //自定义事件区域
+             alert("copy failed！")
+             console.log(e);
+        });
+        </script>
+              
+<div id="ytWidget"></div><script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=zh&widgetTheme=light&autoMode=false" type="text/javascript"></script>
+     
+        <font size="4">减320元/6期免息/现货速发送无线充Xiaomi/小米9手机官方旗舰店9Plus骁龙855红米K20pro米九透明尊享版mix3 4</font><font size="5" color="red"><br /> price: 2999<br /> coupon: 50<br /></font><textarea id="b0">￥C8IEYecAqJq￥</textarea>        
+        <button class="btn" data-clipboard-action="copy"  style="height:80px;width:300px; background-color: #7ED321; font-size: 30px;color: #FFFFFF;"
+        data-clipboard-target="#b0">click to copy token</button>
+        <div style="clear:both;"></div>
+        <div id="ytWidget"></div><script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=zh&widgetTheme=light&autoMode=false" type="text/javascript"></script>
+       
+        <font size="4">降价Xiaomi/小米 小米9透明九SE故宫版尊享探索plus手机10骁龙855</font><font size="5" color="red"><br /> price: 2499<br /> coupon: 10<br /></font><textarea id="b1">￥yzrIYecAOir￥</textarea>        
+        <button class="btn" data-clipboard-action="copy"  style="height:80px;width:300px; background-color: #7ED321; font-size: 30px;color: #FFFFFF;"
+        data-clipboard-target="#b1">click to copy token</button>
+        <div style="clear:both;"></div>
+        --------------------------------------------------------------------------------<br />
+           
+        <font size="4">领券省320元6期免息+选方糖/冰箱◆xiaomi/小米9手机plus官方旗舰店骁龙855透明尊享版米九Mix3 4 红米K20pro</font><font size="5" color="red"><br /> price: 2999<br /> coupon: 50<br /></font><textarea id="b2">￥sHOJYecAwnJ￥</textarea>        
+        <button class="btn" data-clipboard-action="copy"  style="height:80px;width:300px; background-color: #7ED321; font-size: 30px;color: #FFFFFF;"
+        data-clipboard-target="#b2">click to copy token</button>
+        <div style="clear:both;"></div>
